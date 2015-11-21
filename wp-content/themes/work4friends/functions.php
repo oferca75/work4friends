@@ -1,19 +1,10 @@
-<?
-// Inherit parent
-//---------------------------------------
-function theme_enqueue_styles()
+<?php
+
+add_action('wp_enqueue_scripts', 'enqueue_parent_styles');
+function enqueue_parent_styles()
 {
-
-    $parent_style = 'parent-style';
-
-    wp_enqueue_style($parent_style, get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array($parent_style)
-    );
+    wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 }
-
-add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
 
 require get_stylesheet_directory() . '/functions/post-types.php';
@@ -34,4 +25,3 @@ function prowp_define_product_type_taxonomy()
     register_taxonomy('type', 'products', array('hierarchial' => true, 'label' => 'Type', 'query_var' => true, 'rewrite' => true));
 }
 
-?>

@@ -139,4 +139,3 @@ add_filter('comment_text', function ($text, $comment) {
 //add_filter('manage_comments_custom_column', 'myplugin_comment_column', 10, 2);
 
 
-?>

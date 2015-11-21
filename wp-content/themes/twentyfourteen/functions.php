@@ -538,3 +538,20 @@ require get_template_directory() . '/inc/customizer.php';
 if (!class_exists('Featured_Content') && 'plugins.php' !== $GLOBALS['pagenow']) {
     require get_template_directory() . '/inc/featured-content.php';
 }
+
+
+
+add_action('init', 'create_post_type');
+function create_post_type()
+{
+    register_post_type('acme_product',
+        array(
+            'labels' => array(
+                'name' => __('Products'),
+                'singular_name' => __('Product')
+            ),
+            'public' => true,
+            'has_archive' => true,
+        )
+    );
+}
